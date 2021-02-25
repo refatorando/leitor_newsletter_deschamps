@@ -8,4 +8,8 @@ os requisitos para esse robô são os seguintes:
 - não pode ter mais do que 40 linhas, pois pessoal comentou que o bot de trade estava muito complexo ainda para quem estava começando, então quero algo simples
 - Conectar no gmail para ler o email diário da newsletter
 - ler o html do email e transformar em um texto
-- usar o speech do sistema operacional para ler esse texto para nos.
+- usar o speech do sistema operacional para ler esse texto para nós.
+
+
+Canal: https://www.youtube.com/refatorando
+Newsletter: https://filipedeschamps.com.br/newsletter
