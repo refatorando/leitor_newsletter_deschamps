@@ -1,6 +1,6 @@
 # leitor de Newsletter Filipe Deschamps
 
-Bom como a idéia principal aqui poupar tempo o que eu pensei, como conseguir noticiais interessantes e relevantes do mercado de tecnologia. 
+A idéia principal aqui poupar tempo o que eu pensei, como conseguir noticiais interessantes e relevantes do mercado de tecnologia. 
 e na hora eu lembrei da Newsletter do Filipe Deschamps que como ele mesmo define é um sushi de noticia,
 
 os requisitos para esse robô são os seguintes:
