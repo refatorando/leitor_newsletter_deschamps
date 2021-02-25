@@ -12,4 +12,5 @@ os requisitos para esse robô são os seguintes:
 
 
 Canal: https://www.youtube.com/refatorando
+
 Newsletter: https://filipedeschamps.com.br/newsletter
