@@ -27,7 +27,12 @@ if data[0]:
     print(text)
 
     engine = pyttsx3.init()
-    engine.setProperty("voice", engine.getProperty('voices')[0].id)
+    voices = engine.getProperty('voices')
+    for voice in voices:
+        if u'PT-BR' in voice.id:
+            engine.setProperty('voice', voice.id)
+            break
     engine.setProperty("rate", 250)
     engine.say(text)
     engine.runAndWait()
+   
