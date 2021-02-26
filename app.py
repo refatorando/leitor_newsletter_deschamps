@@ -1,6 +1,6 @@
 import imaplib
+import re
 import credentials
-from bs4 import BeautifulSoup
 import quopri
 import pyttsx3
 
@@ -11,22 +11,23 @@ password = credentials.password
 
 server = imaplib.IMAP4_SSL(host,port)
 server.login(user,password)
-server.select("Deschamps")
-status, data = server.search(None,"(UNSEEN)")
+server.select()
+status, data = server.search(None,'(FROM "newsletter@filipedeschamps.com.br" UNSEEN)')
 
-for num in data[0].split():
-    status, data = server.fetch(num, "(RFC822)")
-    email_msg = data[0][1]
+if data[0]:
+    d = data[0].split()
+    ind = d[-1]
+    btext = server.fetch(ind, "(BODY[1] BODY[HEADER.FIELDS (SUBJECT FROM)])")
+    email_msg = btext[1][1][1]
 
-    soup = BeautifulSoup(markup=email_msg,features="lxml")
-    news = soup.find_all("td")[0].text
-
-    utf = quopri.decodestring(news)
+    utf = quopri.decodestring(email_msg)
     text = utf.decode('utf-8')
+    text = re.sub(r'^https?:\/\/.*[\r\n]*', '', text, flags=re.MULTILINE)
+    text = text.replace('\r\n\r\n', '###').replace('\r\n', ' ').replace('###', '\r\n\r\n') #pode melhorar
+    print(text)
 
     engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty("voice", voices[2].id)
+    engine.setProperty("voice", engine.getProperty('voices')[0].id)
     engine.setProperty("rate", 250)
     engine.say(text)
     engine.runAndWait()
